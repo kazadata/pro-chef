@@ -1,3 +1,23 @@
+
+nvm use 24
+
+npm install @salla.sa/cli -g
+
+salla --version
+
+npm install -g pnpm
+
+rmdir /s /q node_modules
+del package-lock.json
+
+pnpm install
+
+salla theme preview
+
+
+
+
+
 <div id="top"></div>
 <br />
 <div align="center"> 
