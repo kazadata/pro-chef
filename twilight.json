@@ -1081,7 +1081,55 @@
             },
             "icon": "sicon-store",
             "path": "home.tajreby",
-            "fields": []
+            "fields": [
+                {
+                    "id": "slider12",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "Slider1",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": 0,
+                    "required": false,
+                    "step": 2.5,
+                    "minimum": -50,
+                    "maximum": 50
+                },
+                {
+                    "id": "dropdown_list112",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "منتجات تعدد",
+                    "description": "منتجات تعدد الاختيارات",
+                    "labelHTML": "قائمة منتجات",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Products",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "value": []
+                },
+                {
+                    "id": "dropdown_list25",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "منتجات بدون تعدد",
+                    "description": "منتجات بدون تعدد الاختيارات",
+                    "labelHTML": "قائمة منتجات",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Products",
+                    "multichoice": false,
+                    "searchable": true,
+                    "required": false,
+                    "value": []
+                }
+            ]
         }
     ],
     "support_url": null,
