@@ -1072,6 +1072,16 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "c7e1ae84-763f-41e6-8040-a178b4e1104d",
+            "title": {
+                "en": "tajreby",
+                "ar": "تجريبي"
+            },
+            "icon": "sicon-store",
+            "path": "home.tajreby",
+            "fields": []
         }
     ],
     "support_url": null,
