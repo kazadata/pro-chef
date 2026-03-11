@@ -8,55 +8,67 @@ const asset = file => path.resolve('src/assets', file || '');
 const public = file => path.resolve("public", file || '');
 
 module.exports = {
-    entry  : {
-        app     : [asset('styles/app.scss'), asset('js/wishlist.js'), asset('js/app.js'), asset('js/blog.js')],
-        home    : asset('js/home.js'),
-        'product-card' : asset('js/partials/product-card.js'),
-        'main-menu' : asset('js/partials/main-menu.js'),
+    entry: {
+        app: [asset('styles/app.scss'), asset('js/wishlist.js'), asset('js/app.js'), asset('js/blog.js')],
+        home: asset('js/home.js'),
+        'product-card': asset('js/partials/product-card.js'),
+        'main-menu': asset('js/partials/main-menu.js'),
         'wishlist-card': asset('js/partials/wishlist-card.js'),
         'add-product-toast': asset('js/partials/add-product-toast.js'),
         'digital-files': asset('js/partials/digital-files.js'),
         checkout: [asset('js/cart.js'), asset('js/thankyou.js')],
-        pages   : [asset('js/loyalty.js'), asset('js/brands.js'),],
-        product : [asset('js/product.js'), asset('js/products.js')],
-        order   : asset('js/order.js'),
-        testimonials   : asset('js/testimonials.js')
+        pages: [asset('js/loyalty.js'), asset('js/brands.js'),],
+        product: [asset('js/product.js'), asset('js/products.js')],
+        order: asset('js/order.js'),
+        testimonials: asset('js/testimonials.js')
     },
-    output : {
+    output: {
         path: public(),
         clean: true,
         chunkFilename: "[name].[contenthash].js"
     },
-    stats  : {modules: false, assetsSort: "size", assetsSpace: 50},
-    module : {
+    stats: { modules: false, assetsSort: "size", assetsSpace: 50 },
+    module: {
         rules: [
             {
-                test   : /\.js$/,
+                test: /\.js$/,
                 exclude: [
                     /(node_modules)/,
                     asset('js/twilight.js')
                 ],
-                use    : {
-                    loader : 'babel-loader',
+                use: {
+                    loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
                         plugins: [
-                          ["@babel/plugin-transform-runtime",
-                           {
-                               "regenerator": true
-                           }
-                          ]
+                            ["@babel/plugin-transform-runtime",
+                                {
+                                    "regenerator": true
+                                }
+                            ]
                         ],
                     }
                 }
             },
             {
                 test: /\.(s(a|c)ss)$/,
-                use : [
+                use: [
                     MiniCssExtractPlugin.loader,
-                    {loader: "css-loader", options: {url: false}},
+                    { loader: "css-loader", options: { url: false } },
                     "postcss-loader",
-                    "sass-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            // هنا الحل الرئيسي
+                            sassOptions: {
+                                quietDeps: true,  // يخفي الـ deprecation warnings من الـ dependencies (زي tailwind أو imports خارجية)
+                                // لو لسه فيه warnings من كودك أنت (مش dependencies)، أضف ده:
+                                silenceDeprecations: ['import'],  // يسكت تحديدًا الـ @import deprecation
+                            },
+                            // اختياري: لو sass-loader عندك إصدار حديث (≥14)، جرب غير الـ API للـ modern عشان أقل warnings مستقبليًا
+                            // api: 'modern-compiler',  // uncomment لو جربت وشفت إن sass-loader يدعمها
+                        }
+                    },
                 ]
             },
         ],
@@ -64,7 +76,7 @@ module.exports = {
     plugins: [
         new ThemeWatcher(),
         new MiniCssExtractPlugin(),
-        new CopyPlugin({patterns: [{from: asset('images'), to: public('images')}]}),
+        new CopyPlugin({ patterns: [{ from: asset('images'), to: public('images') }] }),
     ],
     optimization: {
         minimizer: [
@@ -73,4 +85,4 @@ module.exports = {
         ],
     },
 }
-;
+    ;

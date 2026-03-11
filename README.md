@@ -15,6 +15,34 @@ pnpm install
 salla theme preview
 
 
+====================
+
+عشان تتجاوز مشاكل ال core 
+
+افتح علي فايرفوكس 
+
+
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-features=PrivateNetworkAccess
+
+Chrome - Salla Dev
+
+
+الخطوات على ويندوز (مرة واحدة بس):
+
+أغلق كل نوافذ Chrome الحالية.
+اعمل Shortcut جديد لكروم:
+كليك يمين على الـ Desktop → New → Shortcut
+في المسار حط ده بالضبط:text"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-features=PrivateNetworkAccess(لو عندك Chrome في مكان تاني، غيّر المسار).
+
+سمّي الـ Shortcut مثلاً "Chrome - Salla Dev".
+استخدم هذا الـ Shortcut دائمًا لفتح الـ preview:
+شغّل الـ shortcut أولاً (هيفتح كروم بدون القيود).
+بعدين في الترمينال:cmdsalla theme preview(أو salla theme p)
+
+
+
+https://grok.com/c/9857c3fc-2108-49a5-95e8-53114724fdc8?rid=1ef73958-2bce-4270-9e8c-3128469c9d26
+
 
 
 
