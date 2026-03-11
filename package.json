@@ -8,6 +8,7 @@
     "url": "git+https://github.com/SallaApp/theme-raed.git"
   },
   "scripts": {
+    "p": "salla theme preview --with-editor --browser=firefox --store=elgamil",
     "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "production": "webpack --mode production",
