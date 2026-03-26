@@ -1,0 +1,78 @@
+
+<!-- ============================
+     18. TWO COLUMNS PRODUCTS
+============================= -->
+<section class="py-20 bg-surface-container-low">
+  <div class="section-container grid md:grid-cols-2 gap-8">
+    <!-- Column 1 -->
+    
+     {% for section in component.dropdown_list112 %}
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <h4 class="text-2xl font-headline font-bold text-primary">{{ section | raw }}</h4>
+          <a href="#" class="text-sm text-primary font-bold hover:underline">عرض الكل</a>
+        </div>
+        <div class="product-card group p-4 mb-4">
+          <div class="flex gap-4">
+            <img src="{{ section.featured_product.image }}" class="w-28 h-28 object-cover rounded-xl" alt=""/>
+            <div class="flex-1"><p class="text-xs text-outline uppercase font-bold mb-1">{{ section.featured_product.brand }}</p><h5 class="font-bold text-primary mb-1">{{ section.featured_product.name }}</h5><div class="flex items-center justify-between mt-4"><span class="text-primary font-black">{{ section.featured_product.price }}</span><button class="btn-primary py-2 px-4 text-sm">أضف للسلة</button></div></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {% for product in section.products|slice(0,4) %}
+          <div class="product-card p-3">
+            <img src="{{ product.image }}" class="w-full h-28 object-cover rounded-lg mb-2" alt=""/>
+            <p class="text-xs font-bold text-primary">{{ product.brand }}</p><p class="text-sm text-outline">{{ product.price }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+
+    <div>
+      <div class="flex justify-between items-center mb-6">
+        <h4 class="text-2xl font-headline font-bold text-primary">أحذية رجالية</h4>
+        <a href="#" class="text-sm text-primary font-bold hover:underline">عرض الكل</a>
+      </div>
+      <div class="product-card group p-4 mb-4">
+        <div class="flex gap-4">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFiCpAtuFgWY03iIa6EaXuPmLu7Ux0Ju5gX_tLG_BFyHZYTwMADtuHApONGhSlWbW8bhHwJ3qDU5lKfWJguAFK7ElWsEm4NnqMBpyoNkTffhwNWzrZQSewu7mC2sMOaTWQHi2Ghcw0QhLd7mTlUhHvCI-6nE5iTuzKXFkx4M525xtRgnlvpRXEqsnHjGM-nkiO_mJGAQ7wcnxRIfMkIF194v_86IdbOiEbTsbPmvBNY_Zj_UVldCc0bFmgD-e4wcwCE-Umfj7iO6Dk" class="w-28 h-28 object-cover rounded-xl" alt=""/>
+          <div class="flex-1"><p class="text-xs text-outline uppercase font-bold mb-1">أديداس</p><h5 class="font-bold text-primary mb-1">روان بوست رياضي</h5><div class="flex items-center justify-between mt-4"><span class="text-primary font-black">350 ر.س</span><button class="btn-primary py-2 px-4 text-sm">أضف للسلة</button></div></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="product-card p-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpY9O1HaKRs79QSQl4RjtsI04RrAfhMbesYFeauc1Nunnq4of2D0R1fhlBOn41q_exZTBSVPwmFdaaIlAnoaEBX5diBjeBlCeJjTIJopyCCpWUJ5KBmqmOhm6BuhFzORK5t0uMKFKE0nTr-r65g8r3x9ErclcXcKSYij0aMKkK9xVbCQpaoUXNpQedmzN-W2H_uNaXEKEB7joJHA_6mcp3kf6C5zBDsIRProvCekCOtmnrUvAQFfll_SVyXig5faZaX9oMJW3EcKb3" class="w-full h-28 object-cover rounded-lg mb-2" alt=""/>
+          <p class="text-xs font-bold text-primary">نايكي كلاسيك</p><p class="text-sm text-outline">290 ر.س</p>
+        </div>
+        <div class="product-card p-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACCfh-z3SoOecL0bNcGdPhob1GuU0sKn8Sl89GfsLAA1BU6DCrtfIMECYeOtr5_fzVXUkjim_8t-fscC3c51bp0nH_TYxXXwrXG5fDQgR7Z3LO5ifazXAa29uZmTZ1QTf7wQ7jDhBOYy7X-m755dhUbFKLYlGPpokUNLu32KoUjDCx6-Tg5U9x4o27BaAMHK7Qu0Ls0JX11rI6LB-yBPwj-qq1a1tBNuHPJLtCnZH4ToPZWIcwMO6ZTe2t9ovutLHwRWyZ-AfjBD47" class="w-full h-28 object-cover rounded-lg mb-2" alt=""/>
+          <p class="text-xs font-bold text-primary">بوما ريفلكس</p><p class="text-sm text-outline">320 ر.س</p>
+        </div>
+      </div>
+    </div>
+    <!-- Column 2 -->
+    <div>
+      <div class="flex justify-between items-center mb-6">
+        <h4 class="text-2xl font-headline font-bold text-primary">حقائب نسائية</h4>
+        <a href="#" class="text-sm text-primary font-bold hover:underline">عرض الكل</a>
+      </div>
+      <div class="product-card group p-4 mb-4">
+        <div class="flex gap-4">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn_6o2yqBNqm9xglVHxXAmG__bEt6PMnN_CLAYtWMJVDyxadSkr3nxkzkskiSXyK7t3IrfHgvtCardFIlvnnfZLladIUmm8OLV_5BUtWx-NLHI-iMBna3MnrSH_xPk8HBJJumnPdyuJpjTyikJoqaRRHoRU_3aI95kdY958S3nN6Kddr6EaH9ihs_mV8JmJ9zdr4LchBnt3-ex8eXzvW7WG55ymh9FGrBSjqDrxc40OrpgM_07YYib21DuWLQc-Lwk-a9ubHbsSTRu" class="w-28 h-28 object-cover rounded-xl" alt=""/>
+          <div class="flex-1"><p class="text-xs text-outline uppercase font-bold mb-1">جوتشي</p><h5 class="font-bold text-primary mb-1">حقيبة يد جلدية فاخرة</h5><div class="flex items-center justify-between mt-4"><span class="text-primary font-black">1200 ر.س</span><button class="btn-primary py-2 px-4 text-sm">أضف للسلة</button></div></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="product-card p-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3SI6W-y5qxzSLvMkNPz3NUHFE2RYOhNWLubpLf01xsWKVvEDBDpva_n4m6EuCkdp2Fdhvh63dW2Eoo2cGrqcpJeRgrR2VTZSjJp-w7QbAxOIpDsOZBEm_Aygdcsdt2xuHb-82bGfKQ2NMgMaYVozKYyyQdPevV-LAXZFLGOZVl32bCQ8W96iHb7gl0aMKykhXiSJazjOP8Ysfq-gC1EBqvyursbo1JPwglDV7SYGU1QvsdkHCZwoiafe3IYpZJPApkYFmet8oqBdf" class="w-full h-28 object-cover rounded-lg mb-2" alt=""/>
+          <p class="text-xs font-bold text-primary">كلو ليزا</p><p class="text-sm text-outline">850 ر.س</p>
+        </div>
+        <div class="product-card p-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhXysriPY-vyXMjNmkTq6bU17opbsqX2fNFAtdDlcyrpHFx9zXWC8zrCXpYBxQgadCh6rzzszFpZS6Gl1NvT_PnnClxwYMRXyHoZAXNhxhVm7dP0VlLR7JTaPW3BycwSsiRlGBrXTL6HFtjjj-BgDRAadUOMFwO4Wh2c0yUyZjPKgVDKbqBi0d0aVu4n3DzA4xyyHpPqdGZvyyZfv4h7PUJdvl5kvgZao-iPHzRnV3oyeen2n2U3QRrkC7eHdZgmzo7SRlCTNHTH9b" class="w-full h-28 object-cover rounded-lg mb-2" alt=""/>
+          <p class="text-xs font-bold text-primary">ساعة لوكس</p><p class="text-sm text-outline">2500 ر.س</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

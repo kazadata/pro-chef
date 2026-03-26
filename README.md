@@ -14,7 +14,7 @@ pnpm install
 
 salla theme preview
 
-
+"p": "salla theme preview --with-editor --browser=firefox --store=elgamil",
 ====================
 
 عشان تتجاوز مشاكل ال core 
