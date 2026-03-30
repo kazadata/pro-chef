@@ -7,8 +7,58 @@
 | store.username                                     | string   |                                                                                                          |
 | store.description                                  | string   |                                                                                                          |
 | store.slogan                                       | ?string  | * if feature in twilight.json                                                                            |
-| store.logo                                         | string   |                                                                                                          |
-| store.url                                          | string   |                                                                                                          |
+| store.logo                                         | string   |                                                                <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;700&amp;family=Noto+Sans+Arabic:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --bg-warm: #FBF8F4;
+            --primary: #0F4C8A;
+            --accent: #8C7355;
+            --text-main: #2D2926;
+            --text-muted: #6B6661;
+            
+            --font-main: 'Noto Sans Arabic', sans-serif;
+            --color-primary: #0F4C8A;
+        }
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+        }
+        .serif-heading {
+            font-family: 'Amiri', serif;
+        }
+        .glass-nav {
+            background: rgba(251, 248, 244, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .editorial-spacing {
+            letter-spacing: 0.05em;
+        }
+        .grayscale-hover img {
+            transition: filter 0.5s ease;
+            filter: grayscale(100%);
+        }
+        .grayscale-hover:hover img {
+            filter: grayscale(0%);
+        }
+        .primary-text { color: var(--primary); }
+        .primary-bg { background-color: var(--primary); }
+        .primary-border { border-color: var(--primary); }
+        
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+                                                                                                          |
 | store.api                                          | string   | the api url for current store                                                                            |
 | store.icon                                         | string   | *fav icon url                                                                                            |
 | store.contacts                                     | object   | [mobile, phone, email, whatsapp, telegram], ex. store.contacts.email                                     |
@@ -106,6 +156,22 @@
 </noscript>
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
+    <div class="bg-white/50 border-b border-black/5 text-[11px] py-2 px-6 lg:px-24 flex justify-between items-center uppercase tracking-widest font-medium">
+        <div class="flex gap-6">
+            <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+                <span>{{ user.currency.name }}</span>
+                <span class="material-symbols-outlined text-[14px]">expand_more</span>
+            </div>
+            <div class="flex items-center gap-1 cursor-pointer border-r border-black/10 pr-6">
+                <span>{{ user.language.name }}</span>
+            </div>
+        </div>
+        <div class="flex gap-8 text-text-muted">
+            <a class="hover:text-primary transition-colors" href="#">المجلة</a>
+            <a class="hover:text-primary transition-colors" href="#">قصتنا</a>
+            <a class="hover:text-primary transition-colors" href="#">تواصل</a>
+        </div>
+    </div>
     {% component 'header.header' %}
     <main id="main-content" role="main">
     {% block content %}{% endblock %}

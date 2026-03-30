@@ -1,14 +1,389 @@
-{#
-| Variable         | Type       | Description                                                         |
-|------------------|------------|---------------------------------------------------------------------|
-| page             | object     |                                                                     |
-| page.title       | string     | *could be html                                                      |
-| page.slug        | string     | ex: "cat.show"                                                      |
-#}
 {% extends "layouts.master" %}
+
 {% block content %}
-    {% component home %}
-{% endblock %}
-{% block scripts %}
-    <script defer src="{{ 'home.js' | asset }}"></script>
+    <!-- 1. Skin Routine Finder (Interactive Quiz) -->
+    <section class="py-32 px-6 lg:px-24 bg-white" x-data="{ 
+        step: 1, 
+        type: '',
+        recommendations: {
+            'oily': { title: 'مجموعة التوازن المطفي', desc: 'تركيبة خفيفة تتحكم في اللمعان وتشد المسام.' },
+            'dry': { title: 'مجموعة الترطيب العميق', desc: 'عناية غنية بالسيراميد لترميم حاجز البشرة.' },
+            'sensitive': { title: 'مجموعة النقاء المهدئة', desc: 'مكونات طبيعية مهدئة تخفف من حدة التهيج.' },
+            'combination': { title: 'مجموعة العناية المزدوجة', desc: 'توازن مثالي للمناطق الدهنية والجافة.' }
+        }
+    }">
+        <div class="max-w-4xl mx-auto text-center">
+            <div x-show="step === 1" x-transition>
+                <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مستشارك الخاص</span>
+                <h3 class="text-4xl lg:text-5xl serif-heading mb-12">ما هو نوع بشرتكِ؟</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button @click="type = 'oily'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+                        <span class="material-symbols-outlined text-3xl font-light">water_drop</span>
+                        <span class="text-xs font-bold tracking-widest uppercase">دهنية</span>
+                    </button>
+                    <button @click="type = 'dry'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+                        <span class="material-symbols-outlined text-3xl font-light">wb_sunny</span>
+                        <span class="text-xs font-bold tracking-widest uppercase">جافة</span>
+                    </button>
+                    <button @click="type = 'sensitive'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+                        <span class="material-symbols-outlined text-3xl font-light">spa</span>
+                        <span class="text-xs font-bold tracking-widest uppercase">حساسة</span>
+                    </button>
+                    <button @click="type = 'combination'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+                        <span class="material-symbols-outlined text-3xl font-light">contrast</span>
+                        <span class="text-xs font-bold tracking-widest uppercase">مختلطة</span>
+                    </button>
+                </div>
+            </div>
+            <div class="bg-[#F7F7F7] p-12 lg:p-20" x-show="step === 2" x-transition>
+                <h4 class="text-2xl serif-heading mb-4">روتينكِ المقترح</h4>
+                <div class="w-12 h-px bg-accent mx-auto mb-8"></div>
+                <h5 class="text-3xl primary-text serif-heading mb-4" x-text="recommendations[type]?.title"></h5>
+                <p class="text-text-muted mb-10 max-w-sm mx-auto italic" x-text="recommendations[type]?.desc"></p>
+                <div class="flex gap-4 justify-center">
+                    <button class="primary-bg text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest">عرض المجموعة</button>
+                    <button @click="step = 1" class="border border-black/10 px-10 py-4 text-[10px] font-bold uppercase tracking-widest">إعادة الاختبار</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Shop by Concern -->
+    <section class="py-32 px-6 lg:px-24 bg-white border-t border-black/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-20 text-center">
+                <h3 class="text-4xl serif-heading mb-4">تسوقي حسب احتياجك</h3>
+                <p class="text-text-muted text-xs tracking-widest">حلول دقيقة لكل تحدي تواجهه بشرتك</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="relative group overflow-hidden aspect-[4/5] bg-black">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTzlgPaPQepYE1wShJOdldF7eAxMSu7GFLMDiC3P_rpG3gynWrN4zJnz_XCwrCE_xNE6Zl-rViXVswiEVcgp2zXgpl5sGUL8JgUJnV58CaYtnFA1TTO_q7xWEod-Gsu-x0419uY9nQdxfAUtm2vAk27VefvO7rkygmS01eV-NJNhElF_29XkOxLIVKFrO83fJFiVQqpAoSkVUwgdlvkuvSKn4LuzBdu-swtMbFFmSfgdslkFSoDT2kd4N5_LRPczpNy4LfdVWKvGc" alt="Anti-Aging" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+                        <h4 class="text-3xl serif-heading mb-4">مقاومة التجاعيد</h4>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all">استكشاف المنتجات</a>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden aspect-[4/5] bg-black">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldxe-1wmPEus6inAbIdZ_fU7qMWowx3eYlPoh31XDnA91KAESPz5wOJQEnJa8mHhLno9NMxdknqo4TglB5sXDu9r9IxkjvMUhtdfgW2k2aVMErlH_PVhh24o0wTzSmIPYTTnAu7NZ6Us4w-xdOl9VUhIScVahnFvhB30JfiT_McevnEOAgCXs1UEUcdgyHhRPIfagMAx4KpMVD7GARrnB-KC9bzR0YMS4lEaS5jv0IozuPnYJG_z18Q6jayh4zag6fAzT5lzYLko" alt="Hydration" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+                        <h4 class="text-3xl serif-heading mb-4">ترطيب فائق</h4>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all">استكشاف المنتجات</a>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden aspect-[4/5] bg-black">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5Hsec6yJVFrAMlZazPMhjHx817qATJdHQD8eeZpKUIXOHuSmFqxAeKAXMUuIcvKG3EfrKjO4eoj9I5x02lgSJJqSm2pIBnKviBXnPRkjFIYFXF8YKY9EN2CCvoWdBeRjv7FYfvfhSM7IWMqmZQqw8gQMj1RCc5WKVg4r84LSWXcMHqDDR0pJgOqO9_rKw-k0IBOeEfxLMTcNXeBzYv7LD4TaZbPAl-91LEBbbXjWq6oSIvlsE7SLo5KafY3O89doZ3SggkVJZhk" alt="Brightening" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+                        <h4 class="text-3xl serif-heading mb-4">تفتيح ونضارة</h4>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all">استكشاف المنتجات</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Curated Bundles (Kits) -->
+    <section class="py-32 px-6 lg:px-24 bg-[#FBF8F4]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div class="text-right">
+                    <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مجموعات مختارة</span>
+                    <h3 class="text-4xl serif-heading">مجموعات العناية الكاملة</h3>
+                </div>
+                <div class="hidden md:flex gap-4">
+                    <button class="size-12 border border-black/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">east</span>
+                    </button>
+                    <button class="size-12 border border-black/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">west</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="flex flex-col lg:flex-row bg-white border border-black/5 group">
+                    <div class="lg:w-1/2 aspect-square overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb2xDfITGCraWVvzZ-bOl403bJ2gUq7lmYyG3qnnYs6dokBc0LmJnZyp6iqmCUcmHeTwn32UyX4OFEvfiW9cCv9Gf4AcmBVAZ_6tjoL13Jvek-7RtDhQVyuqsb3u1Z8Ak67RvvHnKcV5X13jLYdSsxrqCvjbgpyFZtSLbvJyolcMqrOAd72s1hyhpFY2__XDWqCy9x7MGEER4uq4P5TKhoJKzApJn3SIPrwZQYlOjtXWSqffZkj0hRTyWIuCmj4dDEKGWr2qDwpzk" alt="Morning Glow Kit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="lg:w-1/2 p-10 flex flex-col justify-center text-right">
+                        <span class="text-accent text-[9px] font-bold uppercase tracking-widest mb-2">روتين صباحي</span>
+                        <h4 class="text-2xl serif-heading mb-4">طقم إشراقة الصباح</h4>
+                        <p class="text-text-muted text-xs leading-relaxed mb-8 italic">ثلاث خطوات بسيطة لبدء يومك ببشرة حيوية ومحمية من العوامل الخارجية.</p>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="text-lg font-bold">٣٨٠ ر.س</span>
+                            <span class="text-xs text-text-muted line-through">٤٥٠ ر.س</span>
+                        </div>
+                        <button class="primary-bg text-white py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-colors">اقتناء المجموعة</button>
+                    </div>
+                </div>
+                <div class="flex flex-col lg:flex-row bg-white border border-black/5 group">
+                    <div class="lg:w-1/2 aspect-square overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5nhq6Un5y5s8-1V-FiKRXxam6-If1GC1sbsm1iT4KaFuUauBoZZvcCQzRCNntjIQEmhSRK_zGr0GQ-uiojM8EL8LN-z9N1Dp2h_UWSpBvWZo5VgCfrCI3lQH0U3Wn3xS3-ln6WaYoW3H0HRVPL4jIUlLjPMu4UDUudxxVEjCS0YYDB9J_an7mfvj6L18DCnY8Vv2Syj9oz08IvUDhLH_Xn1N9uXvDJ8K0Y1GNUwzzBBxc7R5Dttf_h_zSKVOMRbxf3jG8Z_LkAcc" alt="Night Repair Kit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="lg:w-1/2 p-10 flex flex-col justify-center text-right">
+                        <span class="text-accent text-[9px] font-bold uppercase tracking-widest mb-2">روتين ليلي</span>
+                        <h4 class="text-2xl serif-heading mb-4">طقم الإصلاح الليلي</h4>
+                        <p class="text-text-muted text-xs leading-relaxed mb-8 italic">تغذية عميقة أثناء النوم لترميم الخلايا واستعادة مرونة البشرة.</p>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="text-lg font-bold">٤٢٠ ر.س</span>
+                            <span class="text-xs text-text-muted line-through">٥١٠ ر.س</span>
+                        </div>
+                        <button class="primary-bg text-white py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-colors">اقتناء المجموعة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Before & After Gallery -->
+    <section class="py-32 px-6 lg:px-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="relative">
+                    <div class="relative aspect-square overflow-hidden rounded-sm">
+                        <div class="absolute inset-0 flex">
+                            <div class="w-1/2 overflow-hidden border-l border-white/20">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHAA3LJRUzdNN8gEKH__l4m2fdye5VwPmcFv29SF5uR3OxfLBY8apZ6cQPFRSf7yTOtZdYl8Ky6Q5fjEfTv_rLscZ0kIgAPe62gJdw1K2yDk_q_umwgPTeMCx608poszxrfKRehwayjwjWRetefy7QFAIAxf7asa7-TVFy3ho6wISACR5XoLAatyE273zxzVO2n71KH_Vd5uCR_poE-1Xq7-Fa15O-4RDq52LJNbFEvQ_N4Zq-TjLRAxIdKG-r6_1n0rPkwru_jNM" alt="Before" class="h-full w-auto object-cover max-w-none grayscale" style="width: 200%;">
+                                <div class="absolute bottom-6 right-6 bg-black/40 backdrop-blur-md px-4 py-2 text-white text-[10px] font-bold tracking-widest uppercase">قبل</div>
+                            </div>
+                            <div class="w-1/2 overflow-hidden">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkAU-n7VwR-vWI-Fc3T3KWERZNjsNVm4tQbyV2amPZVxQlXbCsMGwpqQlZjTmh-XsHRAlwwNJWkJYbuDlMcN3pBtn4MEiKh3aMX0IGBCgWqYt30eNaAiRwIN_OEy9RDl4GYzDIv-4E-QwOkir25AssdiLJR9euITPEZaOq0B4dUvjHa8ZllcuW_yZosjW4E-Kbi7JoNhK1BLRZToKutUJtcyKPWEE9lUeTS55fJB4IJp8twMkvhiZJlp9O3IQaIlSFg-xe7V-lDw" alt="After" class="h-full w-auto object-cover max-w-none" style="width: 200%; transform: translateX(-50%);">
+                                <div class="absolute bottom-6 left-6 bg-primary/80 backdrop-blur-md px-4 py-2 text-white text-[10px] font-bold tracking-widest uppercase">بعد ٢٨ يوم</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-y-0 left-1/2 w-px bg-white/50 z-10 flex items-center justify-center">
+                            <div class="size-10 rounded-full border border-white/50 bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-sm">unfold_more</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-[#FBF8F4] -z-10"></div>
+                </div>
+                <div class="text-right">
+                    <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-6 block">النتائج الملموسة</span>
+                    <h3 class="text-5xl serif-heading mb-8 leading-tight">الفرق الذي <br>تستحقينه</h3>
+                    <p class="text-text-muted text-lg leading-relaxed mb-10 serif-heading italic">في "عنايتي"، نلتزم بالشفافية. نتائجنا لا تعتمد على الوعود فقط، بل على دراسات سريرية وتجارب حقيقية لعميلاتنا اللواتي شهدن تحولاً جذرياً في صحة بشرتهن.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-6 justify-end">
+                            <span class="text-xs font-bold tracking-widest uppercase">تحسن ملمس البشرة</span>
+                            <div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[92%] primary-bg"></div></div>
+                            <span class="text-sm serif-heading">٩٢٪</span>
+                        </div>
+                        <div class="flex items-center gap-6 justify-end">
+                            <span class="text-xs font-bold tracking-widest uppercase">زيادة الترطيب</span>
+                            <div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[85%] primary-bg"></div></div>
+                            <span class="text-sm serif-heading">٨٥٪</span>
+                        </div>
+                        <div class="flex items-center gap-6 justify-end">
+                            <span class="text-xs font-bold tracking-widest uppercase">توحيد اللون</span>
+                            <div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[78%] primary-bg"></div></div>
+                            <span class="text-sm serif-heading">٧٨٪</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. The Science Behind Ingredients -->
+    <section class="py-32 px-6 lg:px-24 bg-[#F7F7F7]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-24 text-center">
+                <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مختبراتنا</span>
+                <h3 class="text-4xl serif-heading">علم المكونات</h3>
+                <div class="w-16 h-px bg-black/20 mt-8"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+                    <div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">science</span>
+                    </div>
+                    <h5 class="text-lg serif-heading mb-4">حمض الهيالورونيك</h5>
+                    <p class="text-xs text-text-muted leading-relaxed italic mb-6">المغناطيس الطبيعي للرطوبة، يحفظ الماء داخل خلايا البشرة لنضارة تدوم.</p>
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">ترطيب عميق</span>
+                </div>
+                <!-- Add other ingredients here if needed, or keep it concise as code.html -->
+                <div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+                    <div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">biotech</span>
+                    </div>
+                    <h5 class="text-lg serif-heading mb-4">الريتينول (فيتامين أ)</h5>
+                    <p class="text-xs text-text-muted leading-relaxed italic mb-6">المعيار الذهبي لمكافحة الشيخوخة وتحفيز تجديد الخلايا وإنتاج الكولاجين.</p>
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">تجديد الخلايا</span>
+                </div>
+                <div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+                    <div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">eco</span>
+                    </div>
+                    <h5 class="text-lg serif-heading mb-4">فيتامين سي</h5>
+                    <p class="text-xs text-text-muted leading-relaxed italic mb-6">مضاد أكسدة قوي يحمي من أضرار الشمس ويمنح البشرة إشراقة فورية.</p>
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">إشراق وحماية</span>
+                </div>
+                <div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+                    <div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">filter_vintage</span>
+                    </div>
+                    <h5 class="text-lg serif-heading mb-4">النياسيناميد</h5>
+                    <p class="text-xs text-text-muted leading-relaxed italic mb-6">يعمل على تصغير المسام الواسعة وتقوية حاجز الحماية الطبيعي للبشرة.</p>
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">توازن المسام</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Hero Banner -->
+    <section class="relative h-[870px] w-full overflow-hidden bg-white">
+        <div class="absolute inset-0 grayscale opacity-90 transition-all duration-1000">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_u2H7kB5FOV-75pUFfys7EPRj0gM4kWI8NvWmk6bhFs8w09gNRUQmawxx2Wtn8xnZMWEmIy9DTwLwSgE2joCKWAeCCTRa5d61W6I3036ZziO58MyLtSVfQA5UbK_BRuHaT8WmdYCCtoNaa8P1I2k6Gn7Os0-teMF6a-0OXiqRLhIsfWoXnzhU-x4XtYAr2LhmG2qkyrnOjZz1PqJThS0AU1LOfvoAbsZBoHdrOinnUY2k1BM4QepeW0mCWIo2eHtI14rUlKlwdlA" alt="Hero Banner" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-l from-black/40 via-transparent to-transparent flex items-center px-6 lg:px-40">
+            <div class="max-w-3xl text-white">
+                <span class="text-xs font-bold uppercase tracking-[0.5em] mb-6 block text-white/80">المجموعة المختارة | خريف ٢٠٢٤</span>
+                <h2 class="text-6xl lg:text-8xl serif-heading leading-[1.1] mb-8">جمالٌ يتحدث <br> بلغة الطبيعة</h2>
+                <p class="text-xl opacity-90 mb-12 max-w-lg leading-relaxed font-light serif-heading italic">عن تلك اللمسة التي تعيد تعريف النور في ملامحك، وعن النقاء الذي تستحقه بشرتك في كل صباح ومساء.</p>
+                <div class="flex gap-8 items-center">
+                    <button class="bg-white text-black px-12 py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-primary hover:text-white transition-all">اكتشفي الآن</button>
+                    <button class="text-white border-b border-white/40 pb-2 text-xs font-bold uppercase tracking-[0.3em] hover:border-white transition-all">قصة المنتجات</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Marquee -->
+    <div class="bg-white py-6 overflow-hidden border-b border-black/5">
+        <div class="flex whitespace-nowrap gap-24 animate-marquee items-center text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted">
+            {% for i in 1..4 %}
+                <div class="flex items-center gap-4"><span>منتجات أصلية ١٠٠٪</span></div>
+                <div class="flex items-center gap-4 text-accent"><span>•</span><span>شحن مجاني للطلبات الفاخرة</span></div>
+                <div class="flex items-center gap-4"><span>عناية عالمية بين يديك</span></div>
+                <div class="flex items-center gap-4 text-accent"><span>•</span><span>دفع آمن ومرن</span></div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 8. Categories (Fصول العناية) -->
+    <section class="py-32 px-6 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-24 text-center">
+                <h3 class="text-4xl lg:text-5xl serif-heading mb-6">فصول العناية</h3>
+                <div class="w-20 h-px bg-accent mb-6"></div>
+                <p class="text-text-muted text-sm tracking-widest max-w-md">انطلقي في رحلة البحث عن روتينك المثالي المصمم خصيصاً لاحتياجاتك الفريدة.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16">
+                <!-- We can use store.categories here if we want dynamic data -->
+                {% for category in categories %}
+                    <a href="{{ category.url }}" class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+                        <div class="relative size-32 lg:size-40">
+                            <div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+                            <img src="{{ category.image ?: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMiR9RFIfWPQRaEJuXVT-tlCz52RoHP3Bgkv2omrm9Lc29Z4fu3iGm9GO0ADnK-VhtTxCd6NAkx1WK1NQ2tVQmLIsVZRujpqX13sgOs7ojuEgADb7KZWuDsXhRKPduDl1d3wC_sReUiZeAxsHMWll3vQusRT12ImvzpPePGjGzq87hPZuMl5zxAPvCIBC6aNgPsRxkpmM4nZYJime00F_Fo4A2lW5LsaobdxLjTWYp5hR_2Dus4dE9EX12Xzuh9yF8E8Wf_v7IJ7Q' }}" alt="{{ category.name }}" class="w-full h-full object-cover rounded-full p-2">
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">{{ category.name }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. New Arrivals (Product Grid) -->
+    <section class="bg-white py-32 px-6 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-20 border-b border-black/5 pb-10">
+                <div class="text-right">
+                    <h3 class="text-4xl serif-heading mb-3">حداثة التكوين</h3>
+                    <p class="text-text-muted text-xs uppercase tracking-[0.3em]">اكتشفي آخر ما وصل من عالم الابتكار في العناية</p>
+                </div>
+                <a href="{{ link('products.index') }}" class="text-xs font-bold uppercase tracking-widest text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all">الكل</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-24">
+                {% for product in products %}
+                    <div class="flex flex-col group cursor-pointer" onclick="window.location.href='{{ product.url }}'">
+                        <div class="relative overflow-hidden mb-8 aspect-[4/5] bg-[#F7F7F7]">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all"></div>
+                        </div>
+                        <div class="text-center px-4">
+                            <p class="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-2">{{ product.label ?: (product.is_new ? 'جديد' : 'إصدار حصري') }}</p>
+                            <h4 class="text-lg serif-heading primary-text mb-3">{{ product.name }}</h4>
+                            <p class="text-sm font-medium text-text-muted italic serif-heading mb-4">{{ product.slogan ?: 'ترطيبٌ يتغلغل في عمق الجمال' }}</p>
+                            <span class="text-base font-bold tracking-widest primary-text">{{ product.price|money }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Philosophy -->
+    <section class="relative h-[921px] overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAeXEGIOL3TMNOCQ2UH0gMOQwpQPAWFgR1GxSr0UYP1s8-4SaQgdCRhTMm3xfbISha_tlK9g62Rtbpjy4Id0Y4-5XadeIP4xy50dJQFi8gGIAG2FV-8Y252n6ni2ID93_giN7_jPUKvsipnbTw5q20R8y6gZTNNlcas98IIiHZm_jqioaqElV06769flw9YPwbYoaWFt9pGdSMWe5VBv0VW5dooqiPAworDpIRHjaW3xsnTGNfox2i68O-fd3RqREcvsduB6rfBjM" alt="Philosophy" class="w-full h-full object-cover grayscale brightness-50">
+        <div class="absolute inset-0 flex items-center justify-center text-center p-12">
+            <div class="max-w-4xl border border-white/20 p-20 backdrop-blur-sm">
+                <h3 class="text-white text-5xl lg:text-7xl serif-heading mb-8 leading-tight">فلسفة النقاء والجمال</h3>
+                <p class="text-white/80 text-lg leading-relaxed mb-12 max-w-2xl mx-auto serif-heading italic">
+                    "نحن نؤمن بأن العناية بالبشرة ليست مجرد روتين يومي، بل هي طقسٌ مقدس من طقوس حب الذات، ننتقي فيه لكل سيدة ما يليق بنبل ملامحها."
+                </p>
+                <button class="bg-white text-black px-16 py-5 text-xs font-bold uppercase tracking-[0.4em] hover:bg-primary hover:text-white transition-all">اكتشفي الفلسفة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Facial Care -->
+    <section class="py-40 px-6 lg:px-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <div class="group relative order-2 lg:order-1">
+                <div class="overflow-hidden aspect-[3/4]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrPAiZqLiGKr3bCUieP_hKHrgJsl2BxJyAPpoHhZv1X6fUZDQQcpqJcw_fqsQqEztKXxo_JTnYA7byoeaFhILS3RIVSMxNDjEqY-cx3iNLrY4Kw6g_M3UA_dDX5COmJJv7FOwPblqOwhUAYBxVPigE91yZHT5RSb1bisc0tdFK-0ib8VkKH2rG9DQyZbFqqLgCO0xIwWi7D6C22BhiRHDfZeRt8t4SIQDbssIarSBhAhpTdfVdryMkW8-qhQrU2uGPoBnLK24T7eg" alt="Facial Care" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+                </div>
+                <div class="absolute -bottom-12 -left-12 bg-[var(--bg-warm)] p-12 max-w-xs shadow-2xl border border-black/5 hidden md:block">
+                    <h4 class="text-2xl serif-heading mb-4">جوهر الوجه</h4>
+                    <p class="text-text-muted text-sm leading-relaxed mb-6">حلول متكاملة تعيد للبشرة حيويتها المفقودة بلمسات طبية رصينة.</p>
+                    <a href="#" class="text-xs font-bold uppercase tracking-widest text-accent flex items-center gap-2">استكشاف <span class="material-symbols-outlined text-sm">west</span></a>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 flex flex-col items-end text-right">
+                <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-6">افتتاحية الموسم</span>
+                <h3 class="text-5xl lg:text-7xl serif-heading mb-10 leading-tight">عناية مكثفة<br>ترتقي بروتينك</h3>
+                <p class="text-text-muted text-lg leading-relaxed mb-12 max-w-lg serif-heading italic">لأن ملامحك هي انعكاس روحك، انتقينا لكِ أكثر التركيبات فعالية وصفاءً، لتعيشي تجربة المنتج الفاخر في كل قطرة.</p>
+                <div class="w-24 h-px bg-black/20 mb-12"></div>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPgErDnIwnCaF4yMitQUJDp7vZpQiOx8nb_jwpGYblPic1ifnCX8_tUGR7JFLvclx7v-yAz9Yc6CBSDqc6OoE8o1rstVeRSzf2n2WoQlRe6FPzwd5_sHPK9FtZm54qlNeysIgWaUm6FOHFJTu7nyxhA16gaSj1ASMROR8rMQCB4vVWo346SxhrhhzEyf4r2uL82wS7D9tq6Z5J2mLSRxKvLAoUEjvWVb1dNNbBts2vfZmTbZQR25mp_K0yVoQqP3NXiiP9GKF_vY4" alt="Hair Care" class="w-full h-64 object-cover grayscale rounded-sm mb-12">
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Trust Badges -->
+    <section class="py-32 px-6 lg:px-24 border-t border-black/5 bg-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
+            <div class="flex flex-col items-center text-center">
+                <span class="material-symbols-outlined text-4xl text-accent font-light mb-8">verified</span>
+                <h5 class="text-xs font-bold uppercase tracking-widest mb-4">الأصالة المطلقة</h5>
+                <p class="text-text-muted text-xs leading-relaxed max-w-[180px]">نضمن لكِ منتجات أصلية من قلب دور الجمال العالمية.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <span class="material-symbols-outlined text-4xl text-accent font-light mb-8">auto_stories</span>
+                <h5 class="text-xs font-bold uppercase tracking-widest mb-4">قصة المنتج</h5>
+                <p class="text-text-muted text-xs leading-relaxed max-w-[180px]">كل منتج لدينا يحمل تاريخاً من الابتكار والشغف بالجمال.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <span class="material-symbols-outlined text-4xl text-accent font-light mb-8">lock</span>
+                <h5 class="text-xs font-bold uppercase tracking-widest mb-4">خصوصية وأمان</h5>
+                <p class="text-text-muted text-xs leading-relaxed max-w-[180px]">تجربة تسوق آمنة تماماً، تحفظ لكِ أرقى مستويات السرية.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <span class="material-symbols-outlined text-4xl text-accent font-light mb-8">support_agent</span>
+                <h5 class="text-xs font-bold uppercase tracking-widest mb-4">استشارة الخبراء</h5>
+                <p class="text-text-muted text-xs leading-relaxed max-w-[180px]">فريقنا من خبراء التجميل جاهز لتقديم النصيحة لجمالك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Newsletter -->
+    <section class="py-40 bg-[var(--bg-warm)] px-6 lg:px-24 flex flex-col items-center text-center">
+        <div class="max-w-3xl">
+            <span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-8 block">مجلة عنايتي البريدية</span>
+            <h3 class="text-4xl lg:text-6xl serif-heading mb-10">كوني جزءاً من الحكاية</h3>
+            <p class="text-text-muted text-lg leading-relaxed mb-16 serif-heading italic">اشتركي ليصلكِ أرقى محتوى جمالي، وعروضنا الحصرية التي صُممت بعناية لتناسب ذوقك الرفيع.</p>
+            <form onsubmit="return salla.form.onSubmit('newsletter.subscribe', event)" class="flex flex-col md:flex-row w-full gap-4 max-w-2xl mx-auto">
+                <input name="email" class="flex-1 bg-transparent border-black/10 border-b focus:border-primary transition-colors py-4 px-6 text-sm placeholder:text-text-muted/40 outline-none" placeholder="عنوان بريدك الإلكتروني" type="email" required>
+                <button type="submit" class="primary-bg text-white px-12 py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-black transition-all">اشتراك</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}
