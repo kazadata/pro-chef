@@ -1,13 +1,13 @@
 
 .store-footer {
-  @apply relative bg-darker text-white mt-8 sm:mt-16;
+  @apply relative bg-white text-[color:var(--main-text-color)] mt-8 sm:mt-16 border-t border-black/5;
 
   a{
-    @apply transition-opacity hover:opacity-75;
+    @apply transition-colors hover:text-primary;
   }
 
   &__inner{
-    @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
+    @apply bg-[color:var(--bg-gray)] py-8 lg:py-16 border-b border-dashed border-black/10;
   }  
 
   h3{
@@ -15,11 +15,11 @@
   }
 
   .social-link {
-    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm
+    @apply border border-black/10 rounded-sm w-8 h-8 justify-center flex items-center hover:text-primary transition duration-300 text-sm
   }
 
   .contact-social{
-    @apply mt-5 pt-5 border-t border-white/10;
+    @apply mt-5 pt-5 border-t border-black/10;
 
     ul {
       @apply mb-0;
@@ -45,5 +45,5 @@
 
 
 .copyright-text p{
-  @apply text-gray-700;
+  @apply text-[color:var(--color-text)];
 }

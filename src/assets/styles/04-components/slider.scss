@@ -54,6 +54,54 @@ salla-slider{
   }
 }
 
+/* Editorial hero close to code.html */
+.editorial-hero {
+  @apply mt-0;
+
+  .swiper-slide {
+    @apply overflow-hidden;
+  }
+
+  .overlay-bg:after {
+    @apply bg-gradient-to-l from-black/50 via-black/20 to-transparent;
+  }
+
+  .editorial-hero-content {
+    @apply pb-10 lg:pb-0;
+  }
+
+  .editorial-hero-kicker {
+    @apply text-[10px] font-bold uppercase tracking-[0.45em] mb-6 block text-white/80;
+  }
+
+  .editorial-hero-title {
+    @apply text-4xl md:text-5xl lg:text-7xl leading-tight mb-6;
+    font-family: "Amiri", serif;
+  }
+
+  .editorial-hero-desc {
+    @apply text-base md:text-lg opacity-90 mb-10 max-w-xl leading-relaxed;
+    font-family: "Amiri", serif;
+    font-style: italic;
+  }
+
+  .editorial-hero-actions {
+    @apply flex flex-wrap gap-4;
+
+    .btn {
+      @apply grow-0;
+    }
+
+    .btn--primary {
+      @apply bg-white text-black border-white hover:bg-primary hover:text-white hover:border-primary px-10 py-4;
+    }
+
+    .btn--outline.light {
+      @apply bg-transparent text-white border-white/40 hover:border-white px-10 py-4;
+    }
+  }
+}
+
 // Photos block slider
 salla-slider.photos-slider {
   .swiper-pagination-bullets.swiper-pagination-horizontal{

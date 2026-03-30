@@ -19,7 +19,7 @@ salla-button {
 }
 
 .btn {
-  @apply transition duration-300 flex-1 inline-flex justify-center items-center px-6 pb-2.5 pt-2 text-sm font-bold rounded-md hover:opacity-80 whitespace-nowrap;
+  @apply transition duration-300 flex-1 inline-flex justify-center items-center px-6 pb-2.5 pt-2 text-sm font-bold rounded-sm hover:opacity-90 whitespace-nowrap tracking-wider;
 
   .loader {
     width: 0;
@@ -82,15 +82,15 @@ salla-button {
   }
 
   &--rounded-gray {
-    @apply inline-flex grow-0 justify-center w-full rounded-full px-3.5 py-2 items-center transition-colors bg-gray-200/50 hover:bg-gray-200/70 text-sm font-medium whitespace-nowrap;
+    @apply inline-flex grow-0 justify-center w-full rounded-sm px-3.5 py-2 items-center transition-colors bg-[color:var(--color-grey)] hover:bg-[color:var(--color-light-grey)] text-sm font-medium whitespace-nowrap border border-black/5;
   }
 
   &--circle-gray {
-    @apply inline-flex justify-center items-center rounded-full px-3 py-3 h-9 w-9 transition-colors bg-gray-200/30 hover:bg-gray-200/50 text-sm font-medium;
+    @apply inline-flex justify-center items-center rounded-sm px-3 py-3 h-9 w-9 transition-colors bg-[color:var(--color-grey)] hover:bg-[color:var(--color-light-grey)] text-sm font-medium border border-black/5;
   }
 
   &--icon {
-    @apply flex items-center justify-center transition bg-white text-gray-500 border-gray-200  hover:border-gray-200 hover:text-gray-600 mx-1 border rounded-full w-10 h-10 font-medium flex-shrink-0;
+    @apply flex items-center justify-center transition bg-white text-gray-500 border-black/10 hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)] mx-1 border rounded-sm w-10 h-10 font-medium flex-shrink-0;
 
     i {
       @apply pointer-events-none;
@@ -134,7 +134,7 @@ salla-button {
   }
 
   &--primary {
-    @apply text-primary-reverse border border-primary bg-primary;
+    @apply text-primary-reverse border border-primary bg-primary hover:bg-[color:var(--color-primary-dark)];
   }
 
   &--outline-primary {
@@ -142,7 +142,7 @@ salla-button {
   }
 
   &--outline {
-    @apply text-gray-400 bg-white hover:bg-primary hover:text-white hover:border-primary shadow-sm border border-gray-200;
+    @apply text-[color:var(--main-text-color)] bg-white hover:bg-primary hover:text-white hover:border-primary shadow-sm border border-black/10;
 
     &.light {
       @apply bg-transparent text-white border-white;

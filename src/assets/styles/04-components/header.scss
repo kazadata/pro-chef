@@ -1,7 +1,7 @@
 
 /* Top Nav */
 .top-navbar {
-  @apply flex py-2 min-h-[48px];
+  @apply flex py-2 min-h-[48px] border-b border-black/5 bg-white/80;
 
   @screen lg {
     @apply py-1.5;
@@ -20,7 +20,7 @@
   }
 
   .s-search-input{
-    @apply bg-gray-200/50 hover:bg-gray-200/70 border-none;
+    @apply bg-[color:var(--color-grey)] hover:bg-[color:var(--color-light-grey)] border border-black/5;
   }
 
   @media (max-width: 640px) {
@@ -54,7 +54,7 @@
 
 // contacs menu items - pages menu items
 .topnav-link-item{
-  @apply inline-block transition duration-300 px-4 rtl:last:pl-0 ltr:last:pr-0 py-px text-sm leading-none ltr:border-r rtl:border-l border-gray-200 ltr:last:border-0 rtl:last:border-0 hover:opacity-80;
+  @apply inline-block transition duration-300 px-4 rtl:last:pl-0 ltr:last:pr-0 py-px text-sm leading-none ltr:border-r rtl:border-l border-black/10 ltr:last:border-0 rtl:last:border-0 hover:text-primary;
 
   &.right-side{
     @apply rtl:first:pr-0 ltr:first:pl-0
@@ -63,7 +63,7 @@
 
 /* Main Nav */
 .main-nav-container {
-  @apply min-h-[68px] lg:min-h-[84px];
+  @apply min-h-[68px] lg:min-h-[84px] border-b border-black/5 bg-white/90 backdrop-blur-sm;
   
   // Custom background Color
   .has-bg &,
@@ -155,7 +155,7 @@
   @apply border-none outline-none transition-opacity hover:opacity-80;
 
   &__icon{
-    @apply text-xl w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-700;
+    @apply text-xl w-10 h-10 rounded-sm border border-black/10 flex items-center justify-center text-[color:var(--main-text-color)] hover:text-primary hover:border-primary;
     &.icon{
       @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
     }
@@ -211,5 +211,38 @@ salla-user-menu{
 .header-search{
   .s-search-results{
     @apply z-10;
+  }
+}
+
+/* Editorial header mode (close to reference) */
+.editorial-header {
+  .editorial-topbar {
+    @apply text-[11px] uppercase tracking-[0.2em];
+  }
+
+  .editorial-mainnav {
+    @apply shadow-none;
+  }
+
+  .editorial-mainnav-row {
+    @apply py-1.5;
+  }
+
+  .editorial-chip-btn {
+    @apply text-[10px] uppercase tracking-widest;
+  }
+
+  .editorial-search salla-search {
+    @apply max-w-[320px] block;
+  }
+
+  .editorial-brand {
+    h1, h2 {
+      @apply tracking-[0.18em] text-primary;
+    }
+  }
+
+  .editorial-actions {
+    @apply gap-2;
   }
 }

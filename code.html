@@ -1,0 +1,559 @@
+<html dir="rtl" lang="ar"><head></head><body class="selection:bg-primary/20">```html
+
+
+
+    <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عنايتي | تجربة الجمال الراقية</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script defer="" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;700&amp;family=Noto+Sans+Arabic:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-warm: #FBF8F4;
+            --primary: #0F4C8A;
+            --accent: #8C7355;
+            --text-main: #2D2926;
+            --text-muted: #6B6661;
+        }
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        .serif-heading {
+            font-family: 'Amiri', serif;
+        }
+        .glass-nav {
+            background: rgba(251, 248, 244, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .editorial-spacing {
+            letter-spacing: 0.05em;
+        }
+        .grayscale-hover img {
+            transition: filter 0.5s ease;
+            filter: grayscale(100%);
+        }
+        .grayscale-hover:hover img {
+            filter: grayscale(0%);
+        }
+        .primary-text { color: var(--primary); }
+        .primary-bg { background-color: var(--primary); }
+        .primary-border { border-color: var(--primary); }
+    </style>
+<div class="bg-white/50 border-b border-black/5 text-[11px] py-2 px-6 lg:px-24 flex justify-between items-center uppercase tracking-widest font-medium">
+<div class="flex gap-6">
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+<span>ريال سعودي</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer border-r border-black/10 pr-6">
+<span>العربية</span>
+</div>
+</div>
+<div class="flex gap-8 text-text-muted">
+<a class="hover:text-primary transition-colors" href="#">المجلة</a>
+<a class="hover:text-primary transition-colors" href="#">قصتنا</a>
+<a class="hover:text-primary transition-colors" href="#">تواصل</a>
+</div>
+</div>
+<nav class="sticky top-0 z-50 glass-nav border-b border-black/5">
+<div class="px-6 lg:px-24 py-6 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<button class="hidden lg:flex items-center gap-2 text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">search</span>
+<span class="text-xs uppercase tracking-widest">بحث</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-3xl lg:text-4xl font-bold tracking-[0.2em] primary-text serif-heading leading-none">عنايتي</h1>
+<span class="text-[9px] uppercase tracking-[0.4em] mt-1 text-accent font-bold">The Art of Care</span>
+</div>
+<div class="flex items-center gap-8">
+<a class="hidden md:flex flex-col items-center group" href="#">
+<span class="text-[10px] text-accent tracking-widest font-bold">أهلاً أحمد</span>
+<span class="text-xs font-medium primary-text group-hover:text-accent transition-colors">الملف الشخصي</span>
+</a>
+<div class="flex gap-6 items-center">
+<button class="relative group">
+<span class="material-symbols-outlined text-2xl font-light group-hover:text-primary transition-colors">favorite</span>
+<span class="absolute -top-1 -right-2 bg-accent text-white text-[8px] px-1.5 py-0.5 rounded-full">3</span>
+</button>
+<button class="relative group">
+<span class="material-symbols-outlined text-2xl font-light group-hover:text-primary transition-colors">shopping_bag</span>
+<span class="absolute -top-1 -right-2 primary-bg text-white text-[8px] px-1.5 py-0.5 rounded-full">2</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-12 justify-center border-t border-black/5 pt-4">
+<a class="text-xs font-bold tracking-[0.2em] primary-text relative after:absolute after:bottom-[-4px] after:right-0 after:w-full after:h-[1px] after:bg-accent" href="#">الرئيسية</a>
+<a class="text-xs font-medium tracking-[0.2em] text-text-muted hover:text-primary transition-colors" href="#">الوجه</a>
+<a class="text-xs font-medium tracking-[0.2em] text-text-muted hover:text-primary transition-colors" href="#">الجسم</a>
+<a class="text-xs font-medium tracking-[0.2em] text-text-muted hover:text-primary transition-colors" href="#">الشعر</a>
+<a class="text-xs font-medium tracking-[0.2em] text-text-muted hover:text-primary transition-colors" href="#">الماركات</a>
+<a class="text-xs font-bold tracking-[0.2em] text-accent" href="#">أحدث الإصدارات</a>
+</div>
+</div>
+</nav>
+<!-- 1. Skin Routine Finder (Interactive Quiz) -->
+<section class="py-32 px-6 lg:px-24 bg-white" x-data="{ 
+    step: 1, 
+    type: '',
+    recommendations: {
+        'oily': { title: 'مجموعة التوازن المطفي', desc: 'تركيبة خفيفة تتحكم في اللمعان وتشد المسام.' },
+        'dry': { title: 'مجموعة الترطيب العميق', desc: 'عناية غنية بالسيراميد لترميم حاجز البشرة.' },
+        'sensitive': { title: 'مجموعة النقاء المهدئة', desc: 'مكونات طبيعية مهدئة تخفف من حدة التهيج.' },
+        'combination': { title: 'مجموعة العناية المزدوجة', desc: 'توازن مثالي للمناطق الدهنية والجافة.' }
+    }
+}">
+<div class="max-w-4xl mx-auto text-center">
+<div x-show="step === 1" x-transition="">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مستشارك الخاص</span>
+<h3 class="text-4xl lg:text-5xl serif-heading mb-12">ما هو نوع بشرتكِ؟</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button @click="type = 'oily'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+<span class="material-symbols-outlined text-3xl font-light">water_drop</span>
+<span class="text-xs font-bold tracking-widest uppercase">دهنية</span>
+</button>
+<button @click="type = 'dry'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+<span class="material-symbols-outlined text-3xl font-light">wb_sunny</span>
+<span class="text-xs font-bold tracking-widest uppercase">جافة</span>
+</button>
+<button @click="type = 'sensitive'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+<span class="material-symbols-outlined text-3xl font-light">spa</span>
+<span class="text-xs font-bold tracking-widest uppercase">حساسة</span>
+</button>
+<button @click="type = 'combination'; step = 2" class="border border-black/5 p-8 hover:border-primary hover:bg-primary/5 transition-all aspect-square flex flex-col items-center justify-center gap-4">
+<span class="material-symbols-outlined text-3xl font-light">contrast</span>
+<span class="text-xs font-bold tracking-widest uppercase">مختلطة</span>
+</button>
+</div>
+</div>
+<div class="bg-[#F7F7F7] p-12 lg:p-20" x-show="step === 2" x-transition="">
+<h4 class="text-2xl serif-heading mb-4">روتينكِ المقترح</h4>
+<div class="w-12 h-px bg-accent mx-auto mb-8"></div>
+<h5 class="text-3xl primary-text serif-heading mb-4" x-text="recommendations[type]?.title"></h5>
+<p class="text-text-muted mb-10 max-w-sm mx-auto italic" x-text="recommendations[type]?.desc"></p>
+<div class="flex gap-4 justify-center">
+<button class="primary-bg text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest">عرض المجموعة</button>
+<button @click="step = 1" class="border border-black/10 px-10 py-4 text-[10px] font-bold uppercase tracking-widest">إعادة الاختبار</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Shop by Concern -->
+<section class="py-32 px-6 lg:px-24 bg-white border-t border-black/5">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col items-center mb-20 text-center">
+<h3 class="text-4xl serif-heading mb-4">تسوقي حسب احتياجك</h3>
+<p class="text-text-muted text-xs tracking-widest">حلول دقيقة لكل تحدي تواجهه بشرتك</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="relative group overflow-hidden aspect-[4/5] bg-black">
+<img alt="Anti-Aging" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTzlgPaPQepYE1wShJOdldF7eAxMSu7GFLMDiC3P_rpG3gynWrN4zJnz_XCwrCE_xNE6Zl-rViXVswiEVcgp2zXgpl5sGUL8JgUJnV58CaYtnFA1TTO_q7xWEod-Gsu-x0419uY9nQdxfAUtm2vAk27VefvO7rkygmS01eV-NJNhElF_29XkOxLIVKFrO83fJFiVQqpAoSkVUwgdlvkuvSKn4LuzBdu-swtMbFFmSfgdslkFSoDT2kd4N5_LRPczpNy4LfdVWKvGc"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+<h4 class="text-3xl serif-heading mb-4">مقاومة التجاعيد</h4>
+<a class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all" href="#">استكشاف المنتجات</a>
+</div>
+</div>
+<div class="relative group overflow-hidden aspect-[4/5] bg-black">
+<img alt="Hydration" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldxe-1wmPEus6inAbIdZ_fU7qMWowx3eYlPoh31XDnA91KAESPz5wOJQEnJa8mHhLno9NMxdknqo4TglB5sXDu9r9IxkjvMUhtdfgW2k2aVMErlH_PVhh24o0wTzSmIPYTTnAu7NZ6Us4w-xdOl9VUhIScVahnFvhB30JfiT_McevnEOAgCXs1UEUcdgyHhRPIfagMAx4KpMVD7GARrnB-KC9bzR0YMS4lEaS5jv0IozuPnYJG_z18Q6jayh4zag6fAzT5lzYLko"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+<h4 class="text-3xl serif-heading mb-4">ترطيب فائق</h4>
+<a class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all" href="#">استكشاف المنتجات</a>
+</div>
+</div>
+<div class="relative group overflow-hidden aspect-[4/5] bg-black">
+<img alt="Brightening" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5Hsec6yJVFrAMlZazPMhjHx817qATJdHQD8eeZpKUIXOHuSmFqxAeKAXMUuIcvKG3EfrKjO4eoj9I5x02lgSJJqSm2pIBnKviBXnPRkjFIYFXF8YKY9EN2CCvoWdBeRjv7FYfvfhSM7IWMqmZQqw8gQMj1RCc5WKVg4r84LSWXcMHqDDR0pJgOqO9_rKw-k0IBOeEfxLMTcNXeBzYv7LD4TaZbPAl-91LEBbbXjWq6oSIvlsE7SLo5KafY3O89doZ3SggkVJZhk"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
+<h4 class="text-3xl serif-heading mb-4">تفتيح ونضارة</h4>
+<a class="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-white/30 pb-1 hover:border-white transition-all" href="#">استكشاف المنتجات</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Curated Bundles (Kits) -->
+<section class="py-32 px-6 lg:px-24 bg-[#FBF8F4]">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div class="text-right">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مجموعات مختارة</span>
+<h3 class="text-4xl serif-heading">مجموعات العناية الكاملة</h3>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="size-12 border border-black/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">east</span>
+</button>
+<button class="size-12 border border-black/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">west</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="flex flex-col lg:flex-row bg-white border border-black/5 group">
+<div class="lg:w-1/2 aspect-square overflow-hidden">
+<img alt="Morning Glow Kit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb2xDfITGCraWVvzZ-bOl403bJ2gUq7lmYyG3qnnYs6dokBc0LmJnZyp6iqmCUcmHeTwn32UyX4OFEvfiW9cCv9Gf4AcmBVAZ_6tjoL13Jvek-7RtDhQVyuqsb3u1Z8Ak67RvvHnKcV5X13jLYdSsxrqCvjbgpyFZtSLbvJyolcMqrOAd72s1hyhpFY2__XDWqCy9x7MGEER4uq4P5TKhoJKzApJn3SIPrwZQYlOjtXWSqffZkj0hRTyWIuCmj4dDEKGWr2qDwpzk"/>
+</div>
+<div class="lg:w-1/2 p-10 flex flex-col justify-center text-right">
+<span class="text-accent text-[9px] font-bold uppercase tracking-widest mb-2">روتين صباحي</span>
+<h4 class="text-2xl serif-heading mb-4">طقم إشراقة الصباح</h4>
+<p class="text-text-muted text-xs leading-relaxed mb-8 italic">ثلاث خطوات بسيطة لبدء يومك ببشرة حيوية ومحمية من العوامل الخارجية.</p>
+<div class="flex items-center justify-between mb-8">
+<span class="text-lg font-bold">٣٨٠ ر.س</span>
+<span class="text-xs text-text-muted line-through">٤٥٠ ر.س</span>
+</div>
+<button class="primary-bg text-white py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-colors">اقتناء المجموعة</button>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row bg-white border border-black/5 group">
+<div class="lg:w-1/2 aspect-square overflow-hidden">
+<img alt="Night Repair Kit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5nhq6Un5y5s8-1V-FiKRXxam6-If1GC1sbsm1iT4KaFuUauBoZZvcCQzRCNntjIQEmhSRK_zGr0GQ-uiojM8EL8LN-z9N1Dp2h_UWSpBvWZo5VgCfrCI3lQH0U3Wn3xS3-ln6WaYoW3H0HRVPL4jIUlLjPMu4UDUudxxVEjCS0YYDB9J_an7mfvj6L18DCnY8Vv2Syj9oz08IvUDhLH_Xn1N9uXvDJ8K0Y1GNUwzzBBxc7R5Dttf_h_zSKVOMRbxf3jG8Z_LkAcc"/>
+</div>
+<div class="lg:w-1/2 p-10 flex flex-col justify-center text-right">
+<span class="text-accent text-[9px] font-bold uppercase tracking-widest mb-2">روتين ليلي</span>
+<h4 class="text-2xl serif-heading mb-4">طقم الإصلاح الليلي</h4>
+<p class="text-text-muted text-xs leading-relaxed mb-8 italic">تغذية عميقة أثناء النوم لترميم الخلايا واستعادة مرونة البشرة.</p>
+<div class="flex items-center justify-between mb-8">
+<span class="text-lg font-bold">٤٢٠ ر.س</span>
+<span class="text-xs text-text-muted line-through">٥١٠ ر.س</span>
+</div>
+<button class="primary-bg text-white py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-colors">اقتناء المجموعة</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Before & After Gallery -->
+<section class="py-32 px-6 lg:px-24 bg-white overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="relative aspect-square overflow-hidden rounded-sm">
+<div class="absolute inset-0 flex">
+<div class="w-1/2 overflow-hidden border-l border-white/20">
+<img alt="Before" class="h-full w-auto object-cover max-w-none grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHAA3LJRUzdNN8gEKH__l4m2fdye5VwPmcFv29SF5uR3OxfLBY8apZ6cQPFRSf7yTOtZdYl8Ky6Q5fjEfTv_rLscZ0kIgAPe62gJdw1K2yDk_q_umwgPTeMCx608poszxrfKRehwayjwjWRetefy7QFAIAxf7asa7-TVFy3ho6wISACR5XoLAatyE273zxzVO2n71KH_Vd5uCR_poE-1Xq7-Fa15O-4RDq52LJNbFEvQ_N4Zq-TjLRAxIdKG-r6_1n0rPkwru_jNM" style="width: 200%;"/>
+<div class="absolute bottom-6 right-6 bg-black/40 backdrop-blur-md px-4 py-2 text-white text-[10px] font-bold tracking-widest uppercase">قبل</div>
+</div>
+<div class="w-1/2 overflow-hidden">
+<img alt="After" class="h-full w-auto object-cover max-w-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkAU-n7VwR-vWI-Fc3T3KWERZNjsNVm4tQbyV2amPZVxQlXbCsMGwpqQlZjTmh-XsHRAlwwNJWkJYbuDlMcN3pBtn4MEiKh3aMX0IGBCgWqYt30eNaAiRwIN_OEy9RDl4GYzDIv-4E-QwOkir25AssdiLJR9euITPEZaOq0B4dUvjHa8ZllcuW_yZosjW4E-Kbi7JoNhK1BLRZToKutUJtcyKPWEE9lUeTS55fJB4IJp8twMkvhiZJlp9O3IQaIlSFg-xe7V-lDw" style="width: 200%; transform: translateX(-50%);"/>
+<div class="absolute bottom-6 left-6 bg-primary/80 backdrop-blur-md px-4 py-2 text-white text-[10px] font-bold tracking-widest uppercase">بعد ٢٨ يوم</div>
+</div>
+</div>
+<!-- Slider Handle -->
+<div class="absolute inset-y-0 left-1/2 w-px bg-white/50 z-10 flex items-center justify-center">
+<div class="size-10 rounded-full border border-white/50 bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">unfold_more</span>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-[#FBF8F4] -z-10"></div>
+</div>
+<div class="text-right">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-6 block">النتائج الملموسة</span>
+<h3 class="text-5xl serif-heading mb-8 leading-tight">الفرق الذي <br/>تستحقينه</h3>
+<p class="text-text-muted text-lg leading-relaxed mb-10 serif-heading italic">في "عنايتي"، نلتزم بالشفافية. نتائجنا لا تعتمد على الوعود فقط، بل على دراسات سريرية وتجارب حقيقية لعميلاتنا اللواتي شهدن تحولاً جذرياً في صحة بشرتهن.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-6 justify-end">
+<span class="text-xs font-bold tracking-widest uppercase">تحسن ملمس البشرة</span>
+<div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[92%] primary-bg"></div></div>
+<span class="text-sm serif-heading">٩٢٪</span>
+</div>
+<div class="flex items-center gap-6 justify-end">
+<span class="text-xs font-bold tracking-widest uppercase">زيادة الترطيب</span>
+<div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[85%] primary-bg"></div></div>
+<span class="text-sm serif-heading">٨٥٪</span>
+</div>
+<div class="flex items-center gap-6 justify-end">
+<span class="text-xs font-bold tracking-widest uppercase">توحيد اللون</span>
+<div class="w-48 h-1 bg-black/5 relative"><div class="absolute inset-y-0 right-0 w-[78%] primary-bg"></div></div>
+<span class="text-sm serif-heading">٧٨٪</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. The Science Behind Ingredients -->
+<section class="py-32 px-6 lg:px-24 bg-[#F7F7F7]">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col items-center mb-24 text-center">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">مختبراتنا</span>
+<h3 class="text-4xl serif-heading">علم المكونات</h3>
+<div class="w-16 h-px bg-black/20 mt-8"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+<div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">science</span>
+</div>
+<h5 class="text-lg serif-heading mb-4">حمض الهيالورونيك</h5>
+<p class="text-xs text-text-muted leading-relaxed italic mb-6">المغناطيس الطبيعي للرطوبة، يحفظ الماء داخل خلايا البشرة لنضارة تدوم.</p>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">ترطيب عميق</span>
+</div>
+<div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+<div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">biotech</span>
+</div>
+<h5 class="text-lg serif-heading mb-4">الريتينول (فيتامين أ)</h5>
+<p class="text-xs text-text-muted leading-relaxed italic mb-6">المعيار الذهبي لمكافحة الشيخوخة وتحفيز تجديد الخلايا وإنتاج الكولاجين.</p>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">تجديد الخلايا</span>
+</div>
+<div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+<div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">eco</span>
+</div>
+<h5 class="text-lg serif-heading mb-4">فيتامين سي</h5>
+<p class="text-xs text-text-muted leading-relaxed italic mb-6">مضاد أكسدة قوي يحمي من أضرار الشمس ويمنح البشرة إشراقة فورية.</p>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">إشراق وحماية</span>
+</div>
+<div class="bg-white p-12 text-center border border-black/5 hover:shadow-xl transition-all group">
+<div class="size-16 rounded-full primary-bg/5 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined primary-text group-hover:text-white transition-colors">filter_vintage</span>
+</div>
+<h5 class="text-lg serif-heading mb-4">النياسيناميد</h5>
+<p class="text-xs text-text-muted leading-relaxed italic mb-6">يعمل على تصغير المسام الواسعة وتقوية حاجز الحماية الطبيعي للبشرة.</p>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-accent">توازن المسام</span>
+</div>
+</div>
+</div>
+</section>
+<section class="relative h-[870px] w-full overflow-hidden bg-white">
+<div class="absolute inset-0 grayscale opacity-90 transition-all duration-1000">
+<img alt="Hero Banner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_u2H7kB5FOV-75pUFfys7EPRj0gM4kWI8NvWmk6bhFs8w09gNRUQmawxx2Wtn8xnZMWEmIy9DTwLwSgE2joCKWAeCCTRa5d61W6I3036ZziO58MyLtSVfQA5UbK_BRuHaT8WmdYCCtoNaa8P1I2k6Gn7Os0-teMF6a-0OXiqRLhIsfWoXnzhU-x4XtYAr2LhmG2qkyrnOjZz1PqJThS0AU1LOfvoAbsZBoHdrOinnUY2k1BM4QepeW0mCWIo2eHtI14rUlKlwdlA"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-l from-black/40 via-transparent to-transparent flex items-center px-6 lg:px-40">
+<div class="max-w-3xl text-white">
+<span class="text-xs font-bold uppercase tracking-[0.5em] mb-6 block text-white/80">المجموعة المختارة | خريف ٢٠٢٤</span>
+<h2 class="text-6xl lg:text-8xl serif-heading leading-[1.1] mb-8">جمالٌ يتحدث <br/> بلغة الطبيعة</h2>
+<p class="text-xl opacity-90 mb-12 max-w-lg leading-relaxed font-light serif-heading italic">عن تلك اللمسة التي تعيد تعريف النور في ملامحك، وعن النقاء الذي تستحقه بشرتك في كل صباح ومساء.</p>
+<div class="flex gap-8 items-center">
+<button class="bg-white text-black px-12 py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-primary hover:text-white transition-all">اكتشفي الآن</button>
+<button class="text-white border-b border-white/40 pb-2 text-xs font-bold uppercase tracking-[0.3em] hover:border-white transition-all">قصة المنتجات</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-12 flex flex-col gap-3">
+<div class="w-16 h-[2px] bg-white"></div>
+<div class="w-8 h-[1px] bg-white/40"></div>
+<div class="w-8 h-[1px] bg-white/40"></div>
+</div>
+</section>
+<div class="bg-white py-6 overflow-hidden border-b border-black/5">
+<div class="flex whitespace-nowrap gap-24 animate-marquee items-center text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted">
+<div class="flex items-center gap-4"><span>منتجات أصلية ١٠٠٪</span></div>
+<div class="flex items-center gap-4 text-accent"><span>•</span><span>شحن مجاني للطلبات الفاخرة</span></div>
+<div class="flex items-center gap-4"><span>عناية عالمية بين يديك</span></div>
+<div class="flex items-center gap-4 text-accent"><span>•</span><span>دفع آمن ومرن</span></div>
+<div class="flex items-center gap-4"><span>منتجات أصلية ١٠٠٪</span></div>
+</div>
+</div>
+<section class="py-32 px-6 lg:px-24">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col items-center mb-24 text-center">
+<h3 class="text-4xl lg:text-5xl serif-heading mb-6">فصول العناية</h3>
+<div class="w-20 h-px bg-accent mb-6"></div>
+<p class="text-text-muted text-sm tracking-widest max-w-md">انطلقي في رحلة البحث عن روتينك المثالي المصمم خصيصاً لاحتياجاتك الفريدة.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16">
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Creams" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMiR9RFIfWPQRaEJuXVT-tlCz52RoHP3Bgkv2omrm9Lc29Z4fu3iGm9GO0ADnK-VhtTxCd6NAkx1WK1NQ2tVQmLIsVZRujpqX13sgOs7ojuEgADb7KZWuDsXhRKPduDl1d3wC_sReUiZeAxsHMWll3vQusRT12ImvzpPePGjGzq87hPZuMl5zxAPvCIBC6aNgPsRxkpmM4nZYJime00F_Fo4A2lW5LsaobdxLjTWYp5hR_2Dus4dE9EX12Xzuh9yF8E8Wf_v7IJ7Q"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">الكريمات</span>
+</div>
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Serums" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-XeuvMH91yYxlwMxKdBM2zKbFP1Zgkk2P9OUlOapxokJiJGS1NBLC7JjM2ospn1QAVQrYamEX3Qo-76SZUDMneRTaLDEFQ6niUkd9EtaaDnOIS1CVp0Z_7bagJumGK45AAju_bzQqn2xBcTQRRoNcG1R_QHCW2w76lz8vogZQKvgrsn8mbDFJ62NyTuyspSPkQ4Ff9jpL2i9GohugODGt9Z9PxXVj7fa1YOL-8RoqHeudN1S3tyk1kt63Iupdt9zz-BKF_WbLR7A"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">السيروم</span>
+</div>
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Masks" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6p-7l-JJFh590iI3l9dYhiol58lxFlik34T_mw21Krr5ok_hTtKpLvdm-LDfwak-l7SPEX43qrthfGQJ_nNCt2Bth34GVETXXYA59KTOGtHOP667ScXYsdHGy0Ae17KvgyYMa1GL_N8WskQNw2YkBneKkHk-oLAwwKOMZQnVBCovZfZM6_purz9S9DLJoVNpwKRdz2o-JGZ7kzFlH9EoB6kInFhB0_jqogCkSyteRXbf8QfE6ExSyge2gOJLKeLl8nVf6lxX5XDI"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">الأقنعة</span>
+</div>
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Hair" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiDL1UoauAbarMWCzLdvWgdyhbohHdzespt6Zb5blnD8TuumuURTMhRqIKGJlYIUcvjK7Z7q41Pkr4MmLCHD9d8mw1z4-819jswtMf4nGQ-I1UUFZshx4YjjRFaCsvgPjkDKJGvAwP3fy-EnUiHstgR9MqW82QkyuLL35HUu61XYlhHSz2X4KifCEcAQqgdFLnbA3QGajVRsfNk92FzMVHVy9ZkoV3x_LnATSKYTWc2yqOVrhCYAXLI7Sr67JQHvNH_EQp-qHuiCM"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">الشعر</span>
+</div>
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Men" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkVdAcATA78K7pvUR5sgOT5pwqkSW2mg-t9uQQm-L2MyPrv1gbB1kyEqJsDxEC3uE-3xAAOFUqt2VGfHSNijFQLeaKY7J3yEWK3w2J7Wdzq75q_qCnXLUy8x5Qlf1GxUin23t50qoBPijQ4g9xuqScLW7IX49W1Iin-y9aDqTRl4Iro3vPq5gZ2m2kIpHnrtRgBdmr0-MRSKJvVykaasA6bp25bzBxA0r9aTeNEj11OxhngG1_4GQIx5fqRVp89KLQlvWV3YIWTRY"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">الرجل</span>
+</div>
+<div class="flex flex-col items-center gap-6 group cursor-pointer grayscale-hover">
+<div class="relative size-32 lg:size-40">
+<div class="absolute inset-0 rounded-full border border-black/5 group-hover:scale-110 transition-transform duration-500"></div>
+<img alt="Body" class="w-full h-full object-cover rounded-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCxBFyQqsKgY3NPetKdgwGV3TQIgRgg-C0OMmeD1fuUEtn85b_EETEIBNVI4ISMptXg9JsbQWBo-gZY77qrJiq2VXYKKhsmlAXDsWyFku0Yibk6YiILeGQqsgOXNT2yoprgIXIk1dM01e6rmp9nZZMNIkuDhrGSkbWS05nq_FPikeuP6vFJGqdh_MuUO5Mlzoq5h2m3rwZYgZ8RJq9WUDpzAW5VyCnX6vLScO8Bi8IP1H2keA0Vv8qUSgJIgLd3h3uUmsR5CVbGk4"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">الجسم</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white py-32 px-6 lg:px-24">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-20 border-b border-black/5 pb-10">
+<div class="text-right">
+<h3 class="text-4xl serif-heading mb-3">حداثة التكوين</h3>
+<p class="text-text-muted text-xs uppercase tracking-[0.3em]">اكتشفي آخر ما وصل من عالم الابتكار في العناية</p>
+</div>
+<a class="text-xs font-bold uppercase tracking-widest text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all" href="#">الكل</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-24">
+<div class="flex flex-col group cursor-pointer">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-[#F7F7F7]">
+<img alt="Product" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNmw3qEolKO3flBTqhOWZHj4JfA2raYNN2D5CQegaO1Jv3OuOtRMO7JZT16DQJL2G_zSZRHf0KCR8Fcahb7Exr4LETl_xkDFsr9KgJRjWkPUI5bpvEB8l_wt-2wzqRF_pSqN5rvbSj9Yel6P_ZAslrqkefzMjP_nHmJ9edpeHEPIvY2qT29lfy1-LajZMsxL-BNO2Fpi-QA2qFaGafv4vCLvtXoab9zrONodvCynnYtpnjV_SxXsYcw5JsB-OgJUJlKcl60gLrbuk"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all"></div>
+</div>
+<div class="text-center px-4">
+<p class="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-2">إصدار حصري</p>
+<h4 class="text-lg serif-heading primary-text mb-3">سيروم الهيالورونيك الفائق</h4>
+<p class="text-sm font-medium text-text-muted italic serif-heading mb-4">ترطيبٌ يتغلغل في عمق الجمال</p>
+<span class="text-base font-bold tracking-widest primary-text">١٤٥ ر.س</span>
+</div>
+</div>
+<div class="flex flex-col group cursor-pointer lg:mt-16">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-[#F7F7F7]">
+<img alt="Product" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLCXAD1NAu7hfnr_wRugR7PaKqhwMTCNiAPos_601o9_a2_MG31GeYQYJQcHrRWl0Ua9pSPQBh_U0sgCNs5LTnJEApQ-iy4CVpyMQ25wpycbmA6K9WPzWs6FfhBQ-jQ5RZH6keLC-tVSdVkuAqTDjc5BFf_qKCGO0GGAmCC4AydCYufc0s6nZHzrRMH7WsfVVRX4Op9XD3c8QNNqp9Flzq89Zaru4EuXvjFAnJ_qeauGek6-tdQRl-VU63b6HuFRjLac_0MYTJ7wU"/>
+</div>
+<div class="text-center px-4">
+<p class="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-2">جديد الآن</p>
+<h4 class="text-lg serif-heading primary-text mb-3">كريم ليلي مخملي</h4>
+<p class="text-sm font-medium text-text-muted italic serif-heading mb-4">رفيقُ سكونكِ لتجديد ملامحك</p>
+<span class="text-base font-bold tracking-widest primary-text">٢١٠ ر.س</span>
+</div>
+</div>
+<div class="flex flex-col group cursor-pointer">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-[#F7F7F7]">
+<img alt="Product" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM6lVIdOi8JHLDhhZBEbmpKCF-hXtr8Gh_VlJ7c9cggwKLATnFb4-c6lNtCEDeWSzFn_c3MkNBqOKL_H0zfoCID3Tm1YS5tIlZr-3nKrnmRmin2PFWIkL9TQJj4G6eQEN2lBBuKBbnFQyRTmrzAwuGGU0irHdUUXwobckzxG7VGAizxTyqEskx8s0r805hjElmpmtiNtuBGlMAlwLK7rtgHIGJ8PpLrW1j6vELPsu4O6UgCOS3aB9o-2RK3ADCUiY7s9JKZX5BVbM"/>
+</div>
+<div class="text-center px-4">
+<p class="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-2">أفضل مبيعاً</p>
+<h4 class="text-lg serif-heading primary-text mb-3">لوشن التوازن الطبيعي</h4>
+<p class="text-sm font-medium text-text-muted italic serif-heading mb-4">لطف الطبيعة في كل قطرة</p>
+<span class="text-base font-bold tracking-widest primary-text">٨٩ ر.س</span>
+</div>
+</div>
+<div class="flex flex-col group cursor-pointer lg:mt-16">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-[#F7F7F7]">
+<img alt="Product" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp8vm2smLkZ2am9aZLMgdMRIBNX0Jn9w3vhVUBArOhiIhXXRbQ5axl6XOhsC580sha13mtTy-X1CK0CN4FRkW6kLhjI4cb7dLI_-S2FT2l1YJWNldPLjf6ZwTFUljIog6NdJrFQoR23-Y994I97HVxsgj2KpM15X7_TO3uBt2WuRK4QQA3Eqwow3Xi7j_lTCscHJYaRq9kUHd5hqjYSBr2pElE6-LZb9yscf5W2dlmEyZZwitGA39OTpqUlWFbfYrEjPV4-IfFaU8"/>
+</div>
+<div class="text-center px-4">
+<p class="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-2">مجموعة فاخرة</p>
+<h4 class="text-lg serif-heading primary-text mb-3">قناع الذهب لتجديد الشباب</h4>
+<p class="text-sm font-medium text-text-muted italic serif-heading mb-4">بريقٌ خالد يشرق من الداخل</p>
+<span class="text-base font-bold tracking-widest primary-text">٤٥٠ ر.س</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative h-[921px] overflow-hidden">
+<img alt="Atmosphere" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAeXEGIOL3TMNOCQ2UH0gMOQwpQPAWFgR1GxSr0UYP1s8-4SaQgdCRhTMm3xfbISha_tlK9g62Rtbpjy4Id0Y4-5XadeIP4xy50dJQFi8gGIAG2FV-8Y252n6ni2ID93_giN7_jPUKvsipnbTw5q20R8y6gZTNNlcas98IIiHZm_jqioaqElV06769flw9YPwbYoaWFt9pGdSMWe5VBv0VW5dooqiPAworDpIRHjaW3xsnTGNfox2i68O-fd3RqREcvsduB6rfBjM"/>
+<div class="absolute inset-0 flex items-center justify-center text-center p-12">
+<div class="max-w-4xl border border-white/20 p-20 backdrop-blur-sm">
+<h3 class="text-white text-5xl lg:text-7xl serif-heading mb-8 leading-tight">فلسفة النقاء والجمال</h3>
+<p class="text-white/80 text-lg leading-relaxed mb-12 max-w-2xl mx-auto serif-heading italic">
+                "نحن نؤمن بأن العناية بالبشرة ليست مجرد روتين يومي، بل هي طقسٌ مقدس من طقوس حب الذات، ننتقي فيه لكل سيدة ما يليق بنبل ملامحها."
+            </p>
+<button class="bg-white text-black px-16 py-5 text-xs font-bold uppercase tracking-[0.4em] hover:bg-primary hover:text-white transition-all">اكتشفي الفلسفة</button>
+</div>
+</div>
+</section>
+<section class="py-40 px-6 lg:px-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+<div class="group relative order-2 lg:order-1">
+<div class="overflow-hidden aspect-[3/4]">
+<img alt="Facial Care" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrPAiZqLiGKr3bCUieP_hKHrgJsl2BxJyAPpoHhZv1X6fUZDQQcpqJcw_fqsQqEztKXxo_JTnYA7byoeaFhILS3RIVSMxNDjEqY-cx3iNLrY4Kw6g_M3UA_dDX5COmJJv7FOwPblqOwhUAYBxVPigE91yZHT5RSb1bisc0tdFK-0ib8VkKH2rG9DQyZbFqqLgCO0xIwWi7D6C22BhiRHDfZeRt8t4SIQDbssIarSBhAhpTdfVdryMkW8-qhQrU2uGPoBnLK24T7eg"/>
+</div>
+<div class="absolute -bottom-12 -left-12 bg-[var(--bg-warm)] p-12 max-w-xs shadow-2xl border border-black/5 hidden md:block">
+<h4 class="text-2xl serif-heading mb-4">جوهر الوجه</h4>
+<p class="text-text-muted text-sm leading-relaxed mb-6">حلول متكاملة تعيد للبشرة حيويتها المفقودة بلمسات طبية رصينة.</p>
+<a class="text-xs font-bold uppercase tracking-widest text-accent flex items-center gap-2" href="#">استكشاف <span class="material-symbols-outlined text-sm">west</span></a>
+</div>
+</div>
+<div class="order-1 lg:order-2 flex flex-col items-end text-right">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-6">افتتاحية الموسم</span>
+<h3 class="text-5xl lg:text-7xl serif-heading mb-10 leading-tight">عناية مكثفة<br/>ترتقي بروتينك</h3>
+<p class="text-text-muted text-lg leading-relaxed mb-12 max-w-lg serif-heading italic">لأن ملامحك هي انعكاس روحك، انتقينا لكِ أكثر التركيبات فعالية وصفاءً، لتعيشي تجربة المنتج الفاخر في كل قطرة.</p>
+<div class="w-24 h-px bg-black/20 mb-12"></div>
+<img alt="Hair Care" class="w-full h-64 object-cover grayscale rounded-sm mb-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPgErDnIwnCaF4yMitQUJDp7vZpQiOx8nb_jwpGYblPic1ifnCX8_tUGR7JFLvclx7v-yAz9Yc6CBSDqc6OoE8o1rstVeRSzf2n2WoQlRe6FPzwd5_sHPK9FtZm54qlNeysIgWaUm6FOHFJTu7nyxhA16gaSj1ASMROR8rMQCB4vVWo346SxhrhhzEyf4r2uL82wS7D9tq6Z5J2mLSRxKvLAoUEjvWVb1dNNbBts2vfZmTbZQR25mp_K0yVoQqP3NXiiP9GKF_vY4"/>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 lg:px-24 border-t border-black/5 bg-white">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl text-accent font-light mb-8">verified</span>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-4">الأصالة المطلقة</h5>
+<p class="text-text-muted text-xs leading-relaxed max-w-[180px]">نضمن لكِ منتجات أصلية من قلب دور الجمال العالمية.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl text-accent font-light mb-8">auto_stories</span>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-4">قصة المنتج</h5>
+<p class="text-text-muted text-xs leading-relaxed max-w-[180px]">كل منتج لدينا يحمل تاريخاً من الابتكار والشغف بالجمال.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl text-accent font-light mb-8">lock</span>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-4">خصوصية وأمان</h5>
+<p class="text-text-muted text-xs leading-relaxed max-w-[180px]">تجربة تسوق آمنة تماماً، تحفظ لكِ أرقى مستويات السرية.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl text-accent font-light mb-8">support_agent</span>
+<h5 class="text-xs font-bold uppercase tracking-widest mb-4">استشارة الخبراء</h5>
+<p class="text-text-muted text-xs leading-relaxed max-w-[180px]">فريقنا من خبراء التجميل جاهز لتقديم النصيحة لجمالك.</p>
+</div>
+</div>
+</section>
+<section class="py-40 bg-[var(--bg-warm)] px-6 lg:px-24 flex flex-col items-center text-center">
+<div class="max-w-3xl">
+<span class="text-accent text-[10px] font-bold uppercase tracking-[0.5em] mb-8 block">مجلة عنايتي البريدية</span>
+<h3 class="text-4xl lg:text-6xl serif-heading mb-10">كوني جزءاً من الحكاية</h3>
+<p class="text-text-muted text-lg leading-relaxed mb-16 serif-heading italic">اشتركي ليصلكِ أرقى محتوى جمالي، وعروضنا الحصرية التي صُممت بعناية لتناسب ذوقك الرفيع.</p>
+<div class="flex flex-col md:flex-row w-full gap-4 max-w-2xl mx-auto">
+<input class="flex-1 bg-transparent border-black/10 border-b focus:border-primary transition-colors py-4 px-6 text-sm placeholder:text-text-muted/40 outline-none" placeholder="عنوان بريدك الإلكتروني" type="email"/>
+<button class="primary-bg text-white px-12 py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-black transition-all">اشتراك</button>
+</div>
+</div>
+</section>
+<footer class="bg-white pt-32 pb-12 px-6 lg:px-24 border-t border-black/5">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+<div class="flex flex-col items-start">
+<div class="flex flex-col items-center mb-10">
+<h2 class="text-3xl font-bold tracking-[0.2em] primary-text serif-heading leading-none">عنايتي</h2>
+</div>
+<p class="text-text-muted text-sm leading-relaxed mb-10 serif-heading italic">المقصد الأول في المملكة العربية السعودية للباحثين عن أرقى منتجات العناية بالبشرة والجمال الفلسفي.</p>
+<div class="flex gap-8">
+<a class="text-text-muted hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-xl">public</span></a>
+<a class="text-text-muted hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="text-text-muted hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h6 class="text-xs font-bold uppercase tracking-[0.2em] primary-text mb-10">استكشاف</h6>
+<ul class="space-y-6">
+<li><a class="text-text-muted text-sm hover:text-primary transition-all" href="#">عن المتجر</a></li>
+<li><a class="text-text-muted text-sm hover:text-primary transition-all" href="#">المدونة</a></li>
+<li><a class="text-text-muted text-sm hover:text-primary transition-all" href="#">الماركات العالمية</a></li>
+<li><a class="text-text-muted text-sm hover:text-primary transition-all" href="#">الخدمات الخاصة</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-xs font-bold uppercase tracking-[0.2em] primary-text mb-10">المساعدة</h6>
+<ul class="space-y-6">
+<li><a class="text-text-muted text-sm hover:text-primary transition-all" href="#">الأسئلة الشائعة</a></li>
+<li></li></ul></div></div></footer></body></html>
