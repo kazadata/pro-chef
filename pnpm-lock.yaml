@@ -43,8 +43,8 @@ importers:
         specifier: ^2.14.366
         version: 2.14.366(@jitsu/protocols@1.10.0)(@types/dlv@1.1.5)(webpack@5.103.0)
       '@salla.sa/twilight-tailwind-theme':
-        specifier: ^2.14.366
-        version: 2.14.366
+        specifier: ^2.14.367
+        version: 2.14.367
       '@tailwindcss/forms':
         specifier: ^0.5.11
         version: 0.5.11(tailwindcss@3.4.19(yaml@2.7.0))
@@ -1005,6 +1005,9 @@ packages:
   '@salla.sa/twilight-tailwind-theme@2.14.366':
     resolution: {integrity: sha512-K6BPphRHVH258/U+cHw178Y/1PBn9ArVVILIuLERBzIMCxs8EJEIJRLW36Dla1NqiyKhDw4KVnLIocYNlX4w/Q==}
 
+  '@salla.sa/twilight-tailwind-theme@2.14.367':
+    resolution: {integrity: sha512-KwgSiNXThezcxhMvkA09AyM23fWqYOlXTfU0gPSSc0qrMalM5UzGV9BAVPDJr3pxkjufnUufSWFjzXSZyo+C/w==}
+
   '@salla.sa/twilight@2.14.366':
     resolution: {integrity: sha512-f9fX0hM77MNKWbjMLLX6PK5AMiXM5/dZIN3jreSiEgt3/pUYwoOYRiFeJG7/kvydcaMYQqbSRHfv7ZpI6FTm7Q==}
     peerDependencies:
@@ -1821,6 +1824,7 @@ packages:
   glob@11.0.3:
     resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
     engines: {node: 20 || >=22}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   google-maps@4.3.3:
@@ -4111,6 +4115,8 @@ snapshots:
       - webpack
 
   '@salla.sa/twilight-tailwind-theme@2.14.366': {}
+
+  '@salla.sa/twilight-tailwind-theme@2.14.367': {}
 
   '@salla.sa/twilight@2.14.366(@jitsu/protocols@1.10.0)(@types/dlv@1.1.5)(webpack@5.103.0)':
     dependencies:
